@@ -99,17 +99,17 @@ func IsErrorReasonUsernameOrPasswordError(err error) bool {
 		return false
 	}
 	e := errors.FromError(err)
-	return e.Reason == ErrorReason_ERROR_REASON_USERNAME_OR_PASSWORD_ERROR.String() && e.Code == 400
+	return e.Reason == ErrorReason_ERROR_REASON_USERNAME_OR_PASSWORD_ERROR.String() && e.Code == 401
 }
 
 // 用户名或密码错误
 func ErrorErrorReasonUsernameOrPasswordError(format string, args ...interface{}) *errors.Error {
-	return errors.New(400, ErrorReason_ERROR_REASON_USERNAME_OR_PASSWORD_ERROR.String(), fmt.Sprintf(format, args...))
+	return errors.New(401, ErrorReason_ERROR_REASON_USERNAME_OR_PASSWORD_ERROR.String(), fmt.Sprintf(format, args...))
 }
 
 // 用户名或密码错误
 func ErrorMessageErrorReasonUsernameOrPasswordError() *errors.Error {
-	return errors.New(400, ErrorReason_ERROR_REASON_USERNAME_OR_PASSWORD_ERROR.String(), "未知错误")
+	return errors.New(401, ErrorReason_ERROR_REASON_USERNAME_OR_PASSWORD_ERROR.String(), "未知错误")
 }
 
 // 用户未找到
@@ -118,16 +118,16 @@ func IsErrorReasonUserNotFound(err error) bool {
 		return false
 	}
 	e := errors.FromError(err)
-	return e.Reason == ErrorReason_ERROR_REASON_USER_NOT_FOUND.String() && e.Code == 400
+	return e.Reason == ErrorReason_ERROR_REASON_USER_NOT_FOUND.String() && e.Code == 404
 }
 
 // 用户未找到
 func ErrorErrorReasonUserNotFound(format string, args ...interface{}) *errors.Error {
-	return errors.New(400, ErrorReason_ERROR_REASON_USER_NOT_FOUND.String(), fmt.Sprintf(format, args...))
+	return errors.New(404, ErrorReason_ERROR_REASON_USER_NOT_FOUND.String(), fmt.Sprintf(format, args...))
 }
 
 // 用户未找到
 func ErrorMessageErrorReasonUserNotFound() *errors.Error {
-	return errors.New(400, ErrorReason_ERROR_REASON_USER_NOT_FOUND.String(), "用户不存在")
+	return errors.New(404, ErrorReason_ERROR_REASON_USER_NOT_FOUND.String(), "用户不存在")
 }
 ```
