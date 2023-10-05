@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package example;
+
+import "errors/errors.proto";
+
+option go_package = "github.com/lyouthzzz/protoc-gen-go-errors/examples";
+
+enum ErrorReason {
+  // 设置缺省错误码
+  option (errors.default_code) = 500;
+  // 设置缺省错误信息
+  option (errors.default_message) = "未知错误";
+
+  // 内部错误
+  ERROR_REASON_INTERNAL_ERROR = 0;
+  // 用户已存在
+  ERROR_REASON_USER_ALREADY_EXISTS = 1 [(errors.message) = "用户已存在"];
+  // 用户名或密码错误
+  ERROR_REASON_USERNAME_OR_PASSWORD_ERROR = 2 [(errors.code) = 401];
+  // 用户未找到
+  ERROR_REASON_USER_NOT_FOUND = 3 [(errors.code) = 404, (errors.message) = "用户不存在"];
+}
