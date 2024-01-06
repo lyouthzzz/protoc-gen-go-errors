@@ -89,7 +89,7 @@ func genErrorsReason(_ *protogen.Plugin, _ *protogen.File, g *protogen.Generated
 			panic(fmt.Sprintf("Enum '%s' range must be greater than 0 and less than or equal to 600", string(v.Desc.Name())))
 		}
 
-		if enumCode == 0 || enumMessage == "" {
+		if enumCode == 0 {
 			continue
 		}
 
